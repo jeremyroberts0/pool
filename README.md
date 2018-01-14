@@ -1,4 +1,6 @@
 # Pool
+![Travis Build Status](https://travis-ci.org/jeremyroberts0/pool.svg?branch=master)
+
 Pool is a thread pool library for Go.  It is designed to execute any number of jobs over a fix number of goroutines.
 
 **It is highly recommend that you import from a git tag and not from master, the API may change**
