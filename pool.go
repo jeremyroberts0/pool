@@ -9,8 +9,8 @@ type Pool struct {
 	max  int
 }
 
-//NewPool Create a new thread pool.  When run, jobs are executed in <max> goroutines
-func NewPool(max int) Pool {
+//New Create a new thread pool.  When run, jobs are executed in <max> goroutines
+func New(max int) Pool {
 	return Pool{
 		jobs: []Job{},
 		max:  max,
