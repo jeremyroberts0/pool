@@ -12,7 +12,7 @@ func TestPoolSuccess(t *testing.T) {
 		return nil
 	})
 
-	pool := NewPool(2)
+	pool := New(2)
 
 	pool.Add(job)
 	pool.Add(job)
@@ -46,7 +46,7 @@ func TestPoolErrors(t *testing.T) {
 		return errors.New(errMessage)
 	})
 
-	pool := NewPool(2)
+	pool := New(2)
 
 	pool.Add(goodJob)
 	pool.Add(badJob)
