@@ -61,6 +61,17 @@ func (p *Pool) Run() (errors []error) {
 	}
 }
 
+// RunAsync designed for running the pool without blocking.  Returns channels to gather the errors and done signal
+// Example: go RunAsync(myDoneChan, myErrChan)
+func (p *Pool) MakeAsyncChans() (chan bool, chan []error) {
+	return make(chan bool), make(chan []error)
+}
+func (p *Pool) RunAsync(doneChan chan bool, errsChan chan []error) {
+	errs := p.Run()
+	errsChan <- errs
+	doneChan <- true
+}
+
 func runQueue(jobs []Job, doneChan chan bool, errChan chan error) {
 	for _, job := range jobs {
 		err := job()
